@@ -66,7 +66,7 @@ public class CenterLocatorPage {
         List<WebElement> centersList = driver.findElements(By.cssSelector("#center-results-container .centerResult"));
         int displayedCentersCount = centersList.size();
 
-        WebElement firstCenter = centersList.getFirst();
+        WebElement firstCenter = centersList.get(0);  
         String firstCenterName = firstCenter.findElement(centerName).getText();
         String firstCenterAddress = firstCenter.findElement(centerAddress).getText();
         firstCenter.click();
