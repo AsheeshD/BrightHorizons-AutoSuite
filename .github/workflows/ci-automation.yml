@@ -37,7 +37,7 @@ jobs:
 
       - name: Archive Test Reports
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2  # Updated to v2 (non-deprecated version)
         with:
           name: test-reports
           path: target\surefire-reports\  # Path where test reports are generated
