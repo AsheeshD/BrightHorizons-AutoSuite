@@ -22,8 +22,10 @@ steps:
     echo "Agent Version: $(Agent.Version)"
     echo "Agent OS: $(Agent.OS)"
     echo "Agent OS Architecture: $(Agent.OSArchitecture)"
-    echo "MAVEN_HOME: %MAVEN_HOME%"
-    echo "PATH: %PATH%"
+    echo "MAVEN_HOME: C:\Program Files\apache-maven-3.9.9-bin"
+    set MAVEN_HOME=C:\Program Files\apache-maven-3.9.9-bin
+    set PATH=%MAVEN_HOME%\bin;%PATH%
+    echo "Updated PATH: %PATH%"
     mvn -version
   displayName: 'Print Debugging Information'
 
@@ -36,3 +38,4 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
