@@ -30,7 +30,7 @@ steps:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'Path'
-    jdkArchitectureOption: 'x64'
+    jdkUserInputPath: 'C:\Program Files\Java\jdk-21'  # Provide the JDK path
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean install'
@@ -42,6 +42,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     failTaskOnFailedTests: true
   displayName: 'Publish Test Results'
+
 
 
 
