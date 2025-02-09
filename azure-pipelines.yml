@@ -7,7 +7,7 @@ trigger:
 - qa-testing
 
 pool:
-  name: 'SelfHostedPool'
+  name: 'TestPool'
 
 steps:
 - script: |
