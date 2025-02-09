@@ -6,6 +6,8 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.chrome.ChromeOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -26,14 +28,26 @@ public class BrightHorizonsSearchTest {
 
     @BeforeClass
     public void setup() throws IOException {
-        System.setProperty("web driver.chrome.driver", "path/to/chromedriver");
+        // Set Chrome options for headless execution in CI/CD
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); // Enables headless mode
+        options.addArguments("--disable-gpu"); // Needed for headless execution on some systems
+        options.addArguments("--window-size=1920,1080"); // Ensures a proper viewport
+        options.addArguments("--disable-dev-shm-usage"); // Helps prevent crashes in Docker/Linux environments
+        options.addArguments("--no-sandbox"); // Required for running in CI/CD (Jenkins, Azure Pipelines, etc.)
+
+        // Initialize WebDriver with Chrome options
+        driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+
+        // Initialize base URL and wait time
         baseUrl = TestDataReader.getBaseUrl();
-        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(TestDataReader.getTimeoutDuration()));
+
+        // Initialize Page Objects
         homePage = new HomePage(driver, wait);
         searchResultsPage = new SearchResultsPage(driver, wait);
         centerLocatorPage = new CenterLocatorPage(driver, wait);
-        driver.manage().window().maximize();
 
         // Initialize Extent Report
         ExtentReportUtil.initialize("./reports/extent-report.html");
