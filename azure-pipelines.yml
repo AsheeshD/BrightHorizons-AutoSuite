@@ -17,15 +17,11 @@ steps:
   displayName: 'Set JAVA_HOME'
 
 - script: |
-    echo "## Debugging Information ##"
-    echo "Agent Name: $(Agent.Name)"
-    echo "Agent Version: $(Agent.Version)"
-    echo "Agent OS: $(Agent.OS)"
-    echo "Agent OS Architecture: $(Agent.OSArchitecture)"
-    echo "MAVEN_HOME: C:\Program Files\apache-maven-3.9.9-bin"
-    set MAVEN_HOME=C:\Program Files\apache-maven-3.9.9-bin
+    echo Setting MAVEN_HOME
+    set MAVEN_HOME=C:\Users\User\Downloads\apache-maven-3.9.9-bin
     set PATH=%MAVEN_HOME%\bin;%PATH%
-    echo "Updated PATH: %PATH%"
+    echo MAVEN_HOME is set to %MAVEN_HOME%
+    echo Updated PATH: %PATH%
     mvn -version
   displayName: 'Print Debugging Information'
 
@@ -38,4 +34,5 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
 
