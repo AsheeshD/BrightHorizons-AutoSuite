@@ -7,7 +7,7 @@ trigger:
 - qa-testing
 
 pool:
-  name: 'TestPool'
+  name: 'Azure Pipelines'
 
 steps:
 - script: |
