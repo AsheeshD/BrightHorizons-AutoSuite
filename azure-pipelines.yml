@@ -22,10 +22,8 @@ steps:
     echo "Agent Version: $(Agent.Version)"
     echo "Agent OS: $(Agent.OS)"
     echo "Agent OS Architecture: $(Agent.OSArchitecture)"
-    echo "MAVEN_HOME: $(MAVEN_HOME)"
+    echo "MAVEN_HOME: %MAVEN_HOME%"
     echo "PATH: %PATH%"
-    set PATH=%PATH%;C:\Users\User\Downloads\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin
-    echo "Updated PATH: %PATH%"
     mvn -version
   displayName: 'Print Debugging Information'
 
