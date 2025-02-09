@@ -16,6 +16,16 @@ steps:
     echo %JAVA_HOME%
   displayName: 'Set JAVA_HOME'
 
+- script: |
+    echo "## Debugging Information ##"
+    echo "Agent Name: $(Agent.Name)"
+    echo "Agent Version: $(Agent.Version)"
+    echo "Agent OS: $(Agent.OS)"
+    echo "Agent OS Architecture: $(Agent.OSArchitecture)"
+    echo "MAVEN_HOME: $(MAVEN_HOME)"
+    mvn -version
+  displayName: 'Print Debugging Information'
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -25,5 +35,4 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
 
