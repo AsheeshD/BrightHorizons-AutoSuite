@@ -7,7 +7,7 @@ trigger:
 - qa-testing
 
 pool:
-  vmImage: 'windows-latest'  # Use Windows VM image
+  name: 'TestPool'  # Use Windows VM image
 
 steps:
 - task: Maven@3
