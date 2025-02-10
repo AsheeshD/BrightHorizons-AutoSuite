@@ -7,18 +7,24 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.List;
 
 public class CenterLocatorPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    // Locators defined as class variables for easy maintainability
-    private final By findCenterLink = By.linkText("Find a Center");
-    private final By searchBox = By.id("addressInput");
+    // Using @FindBy for static elements
+    @FindBy(linkText = "Find a Center")
+    private WebElement findCenterLink;
+
+    @FindBy(id = "addressInput")
+    private WebElement searchBox;
+
+    // Keeping By locators for dynamic elements
     private final By suggestionList = By.className("pac-container");
     private final By resultsCountElement = By.className("resultsNumber");
     private final By centerResultsContainer = By.id("center-results-container");
@@ -29,36 +35,35 @@ public class CenterLocatorPage {
     private final By centerPopup = By.className("gm-style-iw-t");
     private final By centerPopupAddress = By.className("mapTooltip__address");
 
+    // Constructor with PageFactory initialization
     public CenterLocatorPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
+        PageFactory.initElements(driver, this);
     }
 
-    // Step 2: Click on Find a Center option (top header)
+    // Click on "Find a Center" option (top header)
     public String clickFindCenterLink() {
-        WebElement findCenterLinkElement = wait.until(ExpectedConditions.elementToBeClickable(findCenterLink));
-        findCenterLinkElement.click();
+        wait.until(ExpectedConditions.elementToBeClickable(findCenterLink)).click();
         wait.until(ExpectedConditions.urlContains("/child-care-locator"));
         return driver.getCurrentUrl();
     }
 
     public void enterLocation(String location) {
-        WebElement searchBoxElement = wait.until(ExpectedConditions.visibilityOfElementLocated(searchBox));
-        searchBoxElement.clear();
-        searchBoxElement.sendKeys(location);
+        wait.until(ExpectedConditions.visibilityOf(searchBox)).clear();
+        searchBox.sendKeys(location);
 
         // Wait for the suggestion list to appear
         wait.until(ExpectedConditions.visibilityOfElementLocated(suggestionList));
 
         // Use Actions class to simulate pressing down arrow and Enter
         Actions actions = new Actions(driver);
-        actions.moveToElement(searchBoxElement).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+        actions.moveToElement(searchBox).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
     }
 
     public int getResultsCount() {
         WebElement resultsCountElementObj = wait.until(ExpectedConditions.visibilityOfElementLocated(resultsCountElement));
-        String resultsCountText = resultsCountElementObj.getText();
-        return Integer.parseInt(resultsCountText);
+        return Integer.parseInt(resultsCountElementObj.getText());
     }
 
     public Map<String, Object> getFirstCenterDetailsAndVerify() {
@@ -70,12 +75,12 @@ public class CenterLocatorPage {
         String firstCenterName = firstCenter.findElement(centerName).getText();
         String firstCenterAddress = firstCenter.findElement(centerAddress).getText();
         firstCenter.click();
+
         WebElement centerPopupElement = wait.until(ExpectedConditions.visibilityOfElementLocated(centerPopup));
         String popupCenterAddress = centerPopupElement.findElement(centerPopupAddress).getText().trim().replaceAll("\\s+", " ");
 
         WebElement mapTooltipElement = wait.until(ExpectedConditions.visibilityOfElementLocated(mapTooltip));
-        WebElement headlineElement = mapTooltipElement.findElement(mapTooltipHeadline);
-        String popupCenterName = headlineElement.getText();
+        String popupCenterName = mapTooltipElement.findElement(mapTooltipHeadline).getText();
 
         // Storing data in maps
         Map<String, String> listCenterDetails = new HashMap<>();
@@ -86,12 +91,12 @@ public class CenterLocatorPage {
         popupCenterDetails.put("name", popupCenterName);
         popupCenterDetails.put("address", popupCenterAddress);
 
-        /// Combine the center details and count in the result map
+        // Combine the center details and count in the result map
         Map<String, Object> result = new HashMap<>();
-        result.put("displayedCentersCount", displayedCentersCount); // Adding the displayed centers count
+        result.put("displayedCentersCount", displayedCentersCount);
         result.put("listCenter", listCenterDetails);
         result.put("popupCenter", popupCenterDetails);
 
-        return result; // Returning the details for validation in the test file
+        return result;
     }
 }
