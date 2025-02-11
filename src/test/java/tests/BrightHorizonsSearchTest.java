@@ -37,11 +37,11 @@ public class BrightHorizonsSearchTest {
 
         // Set Chrome options for headless execution in CI/CD
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless");
-//        options.addArguments("--disable-gpu");
-//        options.addArguments("--window-size=1920,1080");
-//        options.addArguments("--disable-dev-shm-usage");
-//        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
 
         // Initialize WebDriver with Chrome options
         driver = new ChromeDriver(options);
