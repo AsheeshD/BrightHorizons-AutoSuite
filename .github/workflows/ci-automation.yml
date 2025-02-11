@@ -3,7 +3,7 @@ name: CI Automation Tests
 on:
   push:
     branches:
-      - qa-testing  # Runs tests when code is pushed to qa-testing branchs
+      - main  # Runs tests when code is pushed to qa-testing branchs
   pull_request:
     branches:
       - main  # Runs tests on PRs to main
