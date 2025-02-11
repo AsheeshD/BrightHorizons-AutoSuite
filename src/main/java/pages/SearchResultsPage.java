@@ -1,23 +1,25 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchResultsPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
 
     // Using @FindBy for static elements
     @FindBy(xpath = "//button[@type='submit']")
+    @CacheLookup
     private WebElement searchButton;
 
-    // Keeping By locator for dynamic elements
-    private By firstResult = By.xpath("//h3[contains(text(),'Employee Education in 2018: Strategies to Watch')]");
+    // Using @FindBy for dynamic elements
+    @FindBy(xpath = "//h3[contains(text(),'Employee Education in 2018: Strategies to Watch')]")
+    private WebElement firstResult;
 
     // Constructor with PageFactory initialization
     public SearchResultsPage(WebDriver driver, WebDriverWait wait) {
@@ -33,6 +35,6 @@ public class SearchResultsPage {
 
     // Check if the first result is displayed
     public boolean isFirstResultDisplayed() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(firstResult)).isDisplayed();
+        return wait.until(ExpectedConditions.visibilityOf(firstResult)).isDisplayed();
     }
 }
