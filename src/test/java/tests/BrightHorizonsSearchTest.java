@@ -58,7 +58,7 @@ public class BrightHorizonsSearchTest {
 
         // Initialize Extent Report
         ExtentReportUtil.initialize("./reports/extent-report.html");
-        logger.info("Test setup completed successfully.");
+        logger.info("Test setup successfully.");
     }
 
     @Test(priority = 1)
