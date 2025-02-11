@@ -1,0 +1,46 @@
+2025-02-11 13:09:49 - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2025-02-11 13:09:50 - Using chromedriver 132.0.6834.159 (resolved driver for Chrome 132)
+2025-02-11 13:09:50 - Exporting webdriver.chrome.driver as C:\Users\User\.cache\selenium\chromedriver\win64\132.0.6834.159\chromedriver.exe
+2025-02-11 13:09:52 - Test setup completed successfully.
+2025-02-11 13:09:52 - Starting 'testSearchFunctionality' test.
+2025-02-11 13:10:00 - Navigated to: https://www.brighthorizons.com/
+2025-02-11 13:10:00 - Cookies accepted.
+2025-02-11 13:10:00 - Clicked on the search icon.
+2025-02-11 13:10:01 - Entered search query: Employee Education in 2018: Strategies to Watch
+2025-02-11 13:10:06 - Clicked on the search button.
+2025-02-11 13:10:06 - Search result matches the search term.
+2025-02-11 13:10:06 - Starting 'findCenterFunctionality' test.
+2025-02-11 13:10:22 - Navigated to: https://www.brighthorizons.com/
+2025-02-11 13:10:32 - Cookies accepted.
+2025-02-11 13:10:55 - Clicked 'Find a Center' link. URL: https://www.brighthorizons.com/child-care-locator
+2025-02-11 13:10:56 - Entered location: New York
+2025-02-11 13:10:57 - Results count: 20
+2025-02-11 13:10:58 - Number of centers found and displayed match.
+2025-02-11 13:10:58 - Center name and address match.
+2025-02-11 13:10:59 - Browser closed.
+2025-02-11 13:10:59 - Extent report flushed.
+2025-02-11 13:21:17 - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IdeaIC2024.3\temp-testng-customsuite.xml
+
+2025-02-11 13:21:19 - Using chromedriver 132.0.6834.159 (resolved driver for Chrome 132)
+2025-02-11 13:21:19 - Exporting webdriver.chrome.driver as C:\Users\User\.cache\selenium\chromedriver\win64\132.0.6834.159\chromedriver.exe
+2025-02-11 13:21:21 - Test setup completed successfully.
+2025-02-11 13:21:21 - Starting 'testSearchFunctionality' test.
+2025-02-11 13:21:28 - Navigated to: https://www.brighthorizons.com/
+2025-02-11 13:21:28 - Cookies accepted.
+2025-02-11 13:21:29 - Clicked on the search icon.
+2025-02-11 13:21:30 - Entered search query: Employee Education in 2018: Strategies to Watch
+2025-02-11 13:21:49 - Clicked on the search button.
+2025-02-11 13:21:50 - Search result matches the search term.
+2025-02-11 13:21:50 - Starting 'findCenterFunctionality' test.
+2025-02-11 13:21:52 - Navigated to: https://www.brighthorizons.com/
+2025-02-11 13:22:03 - Cookies accepted.
+2025-02-11 13:22:12 - Clicked 'Find a Center' link. URL: https://www.brighthorizons.com/child-care-locator
+2025-02-11 13:22:13 - Entered location: New York
+2025-02-11 13:22:15 - Results count: 20
+2025-02-11 13:22:17 - Number of centers found and displayed match.
+2025-02-11 13:22:17 - Center name and address match.
+2025-02-11 13:22:18 - Browser closed.
+2025-02-11 13:22:18 - Extent report flushed.
